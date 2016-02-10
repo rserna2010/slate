@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Finix API Reference</title>
 
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
@@ -91,7 +91,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;php&quot;,&quot;ruby&quot;,&quot;python&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -101,9 +101,10 @@
     <div class="tocify-wrapper">
       <img src="images/logo.png" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="shell">cURL</a>
+              <a href="#" data-language-name="php">PHP</a>
+              <a href="#" data-language-name="ruby">Ruby</a>
+              <a href="#" data-language-name="python">Python</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -111,73 +112,51 @@
         <ul class="search-results"></ul>
       <div id="toc">
       </div>
-        <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>A payments API for platforms and marketplaces.</p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+<p>We have language bindings in cURL and PHP! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 
 <h1 id="authentication">Authentication</h1>
+<pre class="highlight shell"><code><span class="c"># With cURL, just supply your username as basic auth (-u) in the header of each request as follows:</span>
+curl <span class="s2">"api_endpoint_here"</span>
+  -u USwyuGJdVcsRTzDeX9smLVGQ:968cb207-1abb-4100-9425-9a723e99eb10
+</code></pre>
+<pre class="highlight php"><code>
+</code></pre>
+
+<p>To communicate with the Finix API, you&rsquo;ll need to authenticate your requests with a username and password. For the sandbox environment please use the following credentials:</p>
+
+<ul>
+<li><p>Username: <code class="prettyprint">USwyuGJdVcsRTzDeX9smLVGQ</code></p></li>
+<li><p>Password: <code class="prettyprint">968cb207-1abb-4100-9425-9a723e99eb10</code></p></li>
+</ul>
 
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>USwyuGJdVcsRTzDeX9smLVGQ:968cb207-1abb-4100-9425-9a723e99eb1</code> with your personal API key.
 </aside>
 
-<h1 id="kittens">Kittens</h1>
+<h1 id="identities">Identities</h1>
 
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>An Identity resource represents a business or person. Payment Instrument resources may be associated to an Identity.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
+<h2 id="create-a-new-identity">Create a New Identity</h2>
+<pre class="highlight shell"><code>
 </code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<pre class="highlight php"><code>
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example Response:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -197,54 +176,133 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all kittens.</p>
-
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
+<p><code class="prettyprint">POST http://b.papi.staging.finix.io/identities</code></p>
 
-<h3 id="query-parameters">Query Parameters</h3>
+<h3 id="request-arguments">Request Arguments</h3>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
+<th>Field</th>
+<th>Type</th>
 <th>Description</th>
+<th>Example</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>first_name</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>First name of the customer or representative of the business</td>
+<td>Dwayne</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>last_name</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Last name of the customer or representative of the business</td>
+<td>Johnson</td>
+</tr>
+<tr>
+<td>tax_id</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Last four digits of the Social Security integer of the customer or representative of the business</td>
+<td>5779</td>
+</tr>
+<tr>
+<td>day</td>
+<td><em>integer</em>, <strong>optional</strong></td>
+<td>Day field of date of birth</td>
+<td>1</td>
+</tr>
+<tr>
+<td>month</td>
+<td><em>integer</em>, <strong>optional</strong></td>
+<td>Month field of date of birth</td>
+<td>2</td>
+</tr>
+<tr>
+<td>year</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Year field of date of birth</td>
+<td>1988</td>
+</tr>
+<tr>
+<td>phone</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Phone integer of the person. Note: There&rsquo;s a separate field for the business phone integer</td>
+<td>1408756449</td>
+</tr>
+<tr>
+<td>email</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Email address of the customer or representative of the business.</td>
+<td>someone@example</td>
+</tr>
+<tr>
+<td>business_name</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Full legal business name if the Identity is a business</td>
+<td>Business, Inc</td>
+</tr>
+<tr>
+<td>doing_business_as</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Name business is using with customers if different from its legal name</td>
+<td>Bob&rsquo;s Burgers</td>
+</tr>
+<tr>
+<td>business_type</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>The type of business</td>
+<td>LIMITED_LIABILITY_COMPANY</td>
+</tr>
+<tr>
+<td>business_tax_id</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Employee Identification integer of the business if the customer is a business</td>
+<td>123456789</td>
+</tr>
+<tr>
+<td>business_phone</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Phone integer of the business</td>
+<td>0123456789</td>
+</tr>
+<tr>
+<td>mcc</td>
+<td><em>integer</em>, <strong>optional</strong></td>
+<td>MCC code for the business</td>
+<td>1520</td>
+</tr>
+<tr>
+<td>settlement_bank_account</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>(ID of the default Payment Instrument used to settle funds</td>
+<td>PIvmSjVFkMaMbUnkjM9yJq6D</td>
+</tr>
+<tr>
+<td>settlement_currency</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Default currency used when settling funds to this Identity</td>
+<td>USD</td>
+</tr>
+<tr>
+<td>max_transaction_amount</td>
+<td><em>integer</em>, <strong>optional</strong></td>
+<td>Maximum transaction allowed for the Identity in cents</td>
+<td>100</td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<h2 id="retrieve-an-identity">Retrieve an Identity</h2>
+<pre class="highlight shell"><code>
 </code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<pre class="highlight php"><code>require 'kittn'
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example Response:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -255,13 +313,11 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p>This endpoint retrieves a previously created Identity.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET http://b.papi.staging.finix.io/identities/identity_id</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -272,16 +328,890 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>identity_id</td>
+<td>ID of the Identity</td>
+</tr>
+</tbody></table>
+
+<h2 id="underwrite-an-identity">Underwrite an Identity</h2>
+<pre class="highlight shell"><code>
+</code></pre>
+<pre class="highlight php"><code>require 'kittn'
+
+</code></pre>
+
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Underwrite a previously created Identity resource so that they can act as a seller and have funds disbursed to their bank account.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://b.papi.staging.finix.io/identities/identity_id/merchants</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>identity_id</td>
+<td>ID of the Identity</td>
+</tr>
+</tbody></table>
+
+<h3 id="request-arguments">Request Arguments</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processor</td>
+<td><em>string</em>, <strong>required</strong></td>
+<td>Processor used for underwriting the Identity, please use &ldquo;DUMMY_V1&rdquo; for now to test the API.</td>
+<td>DUMMY_V1</td>
+</tr>
+</tbody></table>
+
+<h1 id="identity-verifications">Identity Verifications</h1>
+
+<p>Identities (merchants) to whom you wish to pay out must be underwritten as per KYC regulations. Each attempt at verifying an Identity creates a Verification resource.</p>
+
+<h2 id="create-an-identity-verification">Create an Identity Verification</h2>
+<pre class="highlight shell"><code>
+</code></pre>
+<pre class="highlight php"><code>
+</code></pre>
+
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>Perform an identity verification check against a previously created Identity.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://b.papi.staging.finix.io/identities/identity_id/verifications</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>identity_id</td>
+<td>ID of the Identity</td>
+</tr>
+</tbody></table>
+
+<h3 id="request-arguments">Request Arguments</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processor</td>
+<td><em>string</em>, <strong>required</strong></td>
+<td>Service used for verifying the Identity, please use &ldquo;DUMMY_V1&rdquo; for now to test the API.</td>
+<td>DUMMY_V1</td>
+</tr>
+</tbody></table>
+
+<h2 id="retrieve-a-verification">Retrieve a Verification</h2>
+<pre class="highlight shell"><code>
+</code></pre>
+<pre class="highlight php"><code>
+</code></pre>
+
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>Perform an identity verification check against a previously created Identity.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET  http://b.papi.staging.finix.io/verifications/verification_id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>verification_id</td>
+<td>ID of the Verification resource</td>
+</tr>
+</tbody></table>
+
+<h1 id="merchants">Merchants</h1>
+
+<p>An Identity resource represents a business or person. Payment Instrument resources may be associated to an Identity.</p>
+
+<h2 id="create-a-new-merchant">Create a New Merchant</h2>
+<pre class="highlight shell"><code>
+</code></pre>
+<pre class="highlight php"><code>
+</code></pre>
+
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>To create a Merchant you must underwrite a previously created Identity resource.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://b.papi.staging.finix.io/identities/identity_id/merchants</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>identity_id</td>
+<td>ID of the Identity</td>
+</tr>
+</tbody></table>
+
+<h3 id="request-arguments">Request Arguments</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processor</td>
+<td><em>string</em>, <strong>required</strong></td>
+<td>Processor used for underwriting the Identity, please use &ldquo;DUMMY_V1&rdquo; for now to test the API.</td>
+<td>DUMMY_V1</td>
+</tr>
+</tbody></table>
+
+<h2 id="retrieve-a-merchant">Retrieve a Merchant</h2>
+<pre class="highlight shell"><code>
+</code></pre>
+<pre class="highlight php"><code>
+</code></pre>
+
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://b.papi.staging.finix.io/merchants/merchant_id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>merchant_id</td>
+<td>ID of the Merchant</td>
+</tr>
+</tbody></table>
+
+<h1 id="payment-instruments">Payment Instruments</h1>
+
+<p>A Payment Instrument resource represents either a credit card or bank account. All information is securely vaulted and referenced by an ID. A Payment Instrument may be created multiple times, and each tokenization produces a unique ID. Each ID may only be associated one time and to only one Identity. Once associated, a Payment Instrument may not be disassociated from an Identity.</p>
+
+<h2 id="create-a-new-card">Create a New Card</h2>
+<pre class="highlight shell"><code>
+</code></pre>
+<pre class="highlight php"><code>
+</code></pre>
+
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://b.papi.staging.finix.io/payment_instruments</code></p>
+
+<h3 id="request-arguments">Request Arguments</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>identity</td>
+<td><em>string</em>, <strong>required</strong></td>
+<td>Identity resource which the card is associated.</td>
+<td>IDf1vj1U5SA7sbGiuP9vwfn8</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Customer&rsquo;s first name on card.</td>
+<td>Dwayne</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Customer&rsquo;s last name on card.</td>
+<td>Johnson</td>
+</tr>
+<tr>
+<td>full_name</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Customer&rsquo;s full name on card.</td>
+<td>Dwayne Johnson</td>
+</tr>
+<tr>
+<td>type</td>
+<td><em>string</em>, <strong>required</strong></td>
+<td>Type of Payment Instrument. For cards input PAYMENT_CARD.</td>
+<td>PAYMENT_CARD</td>
+</tr>
+<tr>
+<td>number</td>
+<td><em>string</em>, <strong>required</strong></td>
+<td>The digits of the credit card integer.</td>
+<td>1111 111 1111 1111</td>
+</tr>
+<tr>
+<td>security_code</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>The 3-4 digit security code for the card.</td>
+<td>123</td>
+</tr>
+<tr>
+<td>expiration_month</td>
+<td><em>integer</em>, <strong>required</strong></td>
+<td>Expiration month (e.g. 12 for December).</td>
+<td>11</td>
+</tr>
+<tr>
+<td>expiration_year</td>
+<td><em>integer</em>, <strong>required</strong></td>
+<td>Expiration year.</td>
+<td>2020</td>
+</tr>
+<tr>
+<td>available_account_type</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>TBD.</td>
+<td>foo</td>
+</tr>
+<tr>
+<td>line1</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Street address of the associated card.</td>
+<td>1423 S Joane Way</td>
+</tr>
+<tr>
+<td>line2</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Second line of the address of the associated card.</td>
+<td>Apt. 3</td>
+</tr>
+<tr>
+<td>city</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>City of the associated card.</td>
+<td>San Mateo</td>
+</tr>
+<tr>
+<td>region</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>State of the associated card.</td>
+<td>CA</td>
+</tr>
+<tr>
+<td>postal_code</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Postal of the associated card.</td>
+<td>92704</td>
+</tr>
+<tr>
+<td>country</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Country of the associated card.</td>
+<td>USA</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-new-bank-account">Create a New Bank Account</h2>
+<pre class="highlight shell"><code>
+</code></pre>
+<pre class="highlight php"><code>
+</code></pre>
+
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://b.papi.staging.finix.io/payment_instruments</code></p>
+
+<h3 id="request-arguments">Request Arguments</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>full_name</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Customer&rsquo;s full name on card.</td>
+<td>Dwayne Johnson</td>
+</tr>
+<tr>
+<td>identity</td>
+<td><em>string</em>, <strong>required</strong></td>
+<td>Identity resource which the card is associated.</td>
+<td>IDe1AVug8nRAjGux1wY5JJLa</td>
+</tr>
+<tr>
+<td>account_type</td>
+<td><em>string</em>, <strong>required</strong></td>
+<td>Checking or Savings</td>
+<td>SAVINGS</td>
+</tr>
+<tr>
+<td>iban</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>International Bank Account integer</td>
+<td>foo</td>
+</tr>
+<tr>
+<td>type</td>
+<td><em>string</em>, <strong>required</strong></td>
+<td>Type of Payment Instrument. For cards input PAYMENT_CARD.</td>
+<td>BANK_ACCOUNT</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Customer&rsquo;s first name on bank account.</td>
+<td>Dwayne</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Customer&rsquo;s last name on card.</td>
+<td>Johnson</td>
+</tr>
+<tr>
+<td>account_number</td>
+<td><em>string</em>, <strong>required</strong></td>
+<td>Masked account integer.</td>
+<td>84012312415</td>
+</tr>
+<tr>
+<td>country</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Country of the associated bank account.</td>
+<td>USA</td>
+</tr>
+<tr>
+<td>bank_code</td>
+<td><em>string</em>, <strong>required</strong></td>
+<td>Routing integer format. Specified in FedACH database defined by the US Federal Reserve.</td>
+<td>840123124</td>
+</tr>
+<tr>
+<td>bic</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>TBD.</td>
+<td>foo</td>
+</tr>
+<tr>
+<td>company_name</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Name of company if the bank account is a company account.</td>
+<td>Bob&rsquo;s Burgers</td>
+</tr>
+<tr>
+<td>currency</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>Default currency used when settling funds.</td>
+<td>USD</td>
+</tr>
+<tr>
+<td>available_account_type</td>
+<td><em>string</em>, <strong>optional</strong></td>
+<td>TBD.</td>
+<td>foo</td>
+</tr>
+</tbody></table>
+
+<h1 id="transfers">Transfers</h1>
+
+<p>A Transfer resource represents any omnidirectional flow of funds. Transfers can represent either a debit to a card, a credit to a bank account, or a refund to a card depending on the request. Transfers have a state attribute representing the current state of the transaction. There are three possible status values: PENDING, COMPLETED, or FAILED.</p>
+
+<h2 id="debit-a-card">Debit a Card</h2>
+<pre class="highlight shell"><code>
+</code></pre>
+<pre class="highlight php"><code>
+</code></pre>
+
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>A Transfer consisting of obtaining (charging) money from a card (i.e. debit).</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://b.papi.staging.finix.io/transfers</code></p>
+
+<h3 id="request-arguments">Request Arguments</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>source</td>
+<td><em>string</em>, <strong>required</strong></td>
+<td>The Payment Instrument to debited.</td>
+<td>PIvmSjVFkMaMbUnkjM9yJq6D</td>
+</tr>
+<tr>
+<td>identity</td>
+<td><em>string</em>, <strong>required</strong></td>
+<td>UID.</td>
+<td>IDf1vj1U5SA7sbGiuP9vwfn8</td>
+</tr>
+<tr>
+<td>amount</td>
+<td><em>integer</em>, <strong>required</strong></td>
+<td>The amount of the debit in cents.</td>
+<td>100</td>
+</tr>
+</tbody></table>
+
+<h2 id="credit-a-bank-account">Credit a Bank Account</h2>
+<pre class="highlight shell"><code>
+</code></pre>
+<pre class="highlight php"><code>
+</code></pre>
+
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>A Transfer consisting of sending money to a bank account (i.e. credit).</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://b.papi.staging.finix.io/transfers</code></p>
+
+<h3 id="request-arguments">Request Arguments</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>destination</td>
+<td><em>string</em>, <strong>required</strong></td>
+<td>The Payment Instrument to credited.</td>
+<td>PIdX4dGe57HXjpzfgK2oN6cN</td>
+</tr>
+<tr>
+<td>identity</td>
+<td><em>string</em>, <strong>required</strong></td>
+<td>UID.</td>
+<td>IDf1vj1U5SA7sbGiuP9vwfn8</td>
+</tr>
+<tr>
+<td>amount</td>
+<td><em>integer</em>, <strong>required</strong></td>
+<td>The amount of the credit in cents.</td>
+<td>100</td>
+</tr>
+</tbody></table>
+
+<h2 id="refund-a-debit">Refund a Debit</h2>
+<pre class="highlight shell"><code>
+</code></pre>
+<pre class="highlight php"><code>
+</code></pre>
+
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>A Transfer representing a refund of a debit transaction. The amount of the refund may be any value up to the amount of the original debit.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://b.papi.staging.finix.io/transfers/transfer_id/reversals</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transfer_id</td>
+<td>ID of the original Transfer</td>
+</tr>
+</tbody></table>
+
+<h3 id="request-arguments">Request Arguments</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>refund_amount</td>
+<td><em>integer</em>, <strong>required</strong></td>
+<td>The amount of the refund in cents. Must be equal to or less than the amount of the original debit.</td>
+<td>100</td>
+</tr>
+</tbody></table>
+
+<h1 id="disputes">Disputes</h1>
+
+<p>Disputes, also known as chargebacks, represent any customer-disputed charge.</p>
+
+<h2 id="retrieve-a-dispute">Retrieve a Dispute</h2>
+<pre class="highlight shell"><code>
+</code></pre>
+<pre class="highlight php"><code>
+</code></pre>
+
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://b.papi.staging.finix.io/disputes/dispute_id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dispute_id</td>
+<td>ID of the Dispute</td>
+</tr>
+</tbody></table>
+
+<h2 id="upload-evidence-for-a-dispute">Upload Evidence For a Dispute</h2>
+<pre class="highlight shell"><code>
+</code></pre>
+<pre class="highlight php"><code>
+</code></pre>
+
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>A Transfer consisting of sending money to a bank account (i.e. credit).</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://b.papi.staging.finix.io/disputes/dispute_id/files</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dispute_id</td>
+<td>ID of the Dispute</td>
+</tr>
+</tbody></table>
+
+<h3 id="request-arguments">Request Arguments</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>destination</td>
+<td><em>string</em>, <strong>required</strong></td>
+<td>The Payment Instrument to credited.</td>
+<td>PIdX4dGe57HXjpzfgK2oN6cN</td>
+</tr>
+<tr>
+<td>identity</td>
+<td><em>string</em>, <strong>required</strong></td>
+<td>UID.</td>
+<td>IDf1vj1U5SA7sbGiuP9vwfn8</td>
+</tr>
+<tr>
+<td>amount</td>
+<td><em>integer</em>, <strong>required</strong></td>
+<td>The amount of the credit in cents.</td>
+<td>100</td>
 </tr>
 </tbody></table>
 
           <h1 id="errors">Errors</h1>
-
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
-
-<p>The Kittn API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -291,56 +1221,37 @@ Remember — a happy kitten is an authenticated kitten!
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
+<td>Bad Request &ndash; You&rsquo;ve attemped an invalid request</td>
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td>Unauthorized &ndash; You have used the incorrect API key</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
+<td>Not Found &ndash; The specified resource could not be found</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+<td>Method Not Allowed &ndash; You tried to access a resource with an invalid method</td>
 </tr>
 <tr>
 <td>406</td>
 <td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
 <td>500</td>
 <td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
 </tr>
 </tbody></table>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="shell">cURL</a>
+                <a href="#" data-language-name="php">PHP</a>
+                <a href="#" data-language-name="ruby">Ruby</a>
+                <a href="#" data-language-name="python">Python</a>
           </div>
       </div>
     </div>
